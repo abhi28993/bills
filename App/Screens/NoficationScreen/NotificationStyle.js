@@ -1,0 +1,119 @@
+import {StyleSheet} from 'react-native';
+const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+    width: '100%',
+    backgroundColor: '#FFFFFF',
+  },
+  mainSubHeading: {
+    fontSize: 16,
+    color: '#000000',
+    fontFamily: 'Poppins-Light',
+  },
+  textMain: {
+    fontSize: 12,
+    color: '#000000',
+    fontFamily: 'Poppins-Light',
+    marginTop: 8,
+  },
+
+  renderMain: {
+    padding: 2,
+  },
+
+  listinnermain: {
+    flexDirection: 'row',
+    padding: 8,
+    margin: 2,
+    borderRadius: 5,
+    shadowColor: '#0000001A',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 1,
+    elevation: 1,
+  },
+  listinnermainn: {
+    flexDirection: 'row',
+    margin: 8,
+    marginBottom: -20,
+  },
+
+  flatListStyleSecond: {
+    height: '85%',
+    marginTop: '3%',
+  },
+  imgstylelist: {
+    height: 50,
+    width: 60,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+
+  locationmain: {
+    width: '65%',
+    marginLeft: 25,
+    justifyContent: 'center',
+  },
+  renderTexttwo: {
+    fontSize: 12,
+    color: '#000000',
+    fontFamily: 'Poppins-Light',
+  },
+  lowermain: {
+    marginRight: '8%',
+    marginLeft: '8%',
+    marginTop: '2%',
+  },
+  listviewmain: {
+    marginTop: '2%',
+    borderRadius: 35,
+  },
+  iconOuter: {
+    height: 35,
+    width: 35,
+    borderRadius: 50,
+    borderWidth: 2,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    //  backgroundColor: '#2B2D42',
+  },
+  mainHead: {
+    flexDirection: 'row',
+    marginTop: '4%',
+  },
+  underHeader: {
+    marginTop: '3%',
+    flexDirection: 'row',
+  },
+  headMainText: {
+    width: '77%',
+    marginLeft: '5%',
+  },
+  textHeding: {
+    color: '#000000',
+    fontSize: 20,
+    fontFamily: 'Poppins-Light',
+  },
+  renderText: {
+    color: '#2B2D42',
+    fontSize: 15,
+    fontFamily: 'Poppins-Medium',
+  },
+  numberMain: {
+    color: '#000',
+    fontSize: 14,
+    fontFamily: 'Poppins-Medium',
+  },
+  hours: {
+    color: '#2B2D42',
+    fontSize: 12,
+    fontFamily: 'Poppins-Light',
+  },
+});
+
+export default styles;
