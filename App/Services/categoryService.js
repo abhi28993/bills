@@ -1,12 +1,12 @@
 import axios from 'axios';
 import {basePath} from './env';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-let headers = {}
+let headers = {token:global.token}
 
-AsyncStorage.getItem('token').then(resp => {
-  console.log('token ==================', resp);
-  headers.token=resp
-});
+// AsyncStorage.getItem('token').then(resp => {
+//   console.log('token ==================', resp);
+//   headers.token=resp
+// });
 
 
 

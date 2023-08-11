@@ -2,20 +2,18 @@ import * as React from 'react';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
-
-// import Notification from '../Screens/NoficationScreen/Notification';
-// import AddComment from '../Screens/AddCommentScreen/AddComment';
-//import CommentList from '../Screens/CommentListScreen/CommentList';
 import OrderScreen from '../Screens/OrderScreen/Order';
-import {
-  ADD_COMMENT_SCREEN,
-  COMMENT_LIST_SCREEN,
-  ORDER_POST_SCREEN,
-  NOTIFICATION_SCREEN,
-} from '../Assets/Constant/StringConstant';
+import {ORDER_POST_SCREEN} from '../Assets/Constant/StringConstant';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useEffect} from 'react';
+import NewOrder from '../Screens/OrderScreen/NewOrder';
+import AcceptedOrder from '../Screens/OrderScreen/AcceptedOrder';
+import RejectedOrder from '../Screens/OrderScreen/RejectedOrder';
+import PackedOrder from '../Screens/OrderScreen/PackedOrder';
+import ShippedOrder from '../Screens/OrderScreen/ShippedOrder';
+import DeliveredOrder from '../Screens/OrderScreen/DeliveredOrder';
+import OrderDetail from '../Screens/OrderScreen/OrderDetail';
 let CheckToken = () => {
   AsyncStorage.getItem('token').then(resp => {
     return resp;
@@ -31,22 +29,51 @@ const OrderStack = () => {
     }
   }, []);
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {backgroundColor: '#3e04c3'},
+        headerTintColor: '#fff',
+      }}>
       <Stack.Screen
         name={ORDER_POST_SCREEN}
         component={OrderScreen}
-        options={{animationEnabled: false}}
+        options={{animationEnabled: false, headerShown: false}}
       />
-      {/* <Stack.Screen
-        name={COMMENT_LIST_SCREEN}
-        component={CommentList}
-        options={{animationEnabled: false}}
-      /> */}
-      {/* <Stack.Screen
-        name={ADD_COMMENT_SCREEN}
-        component={AddComment}
-        options={{animationEnabled: false}}
-      /> */}
+      <Stack.Screen
+        name="new"
+        options={{headerTitle: 'New Order'}}
+        component={NewOrder}
+      />
+      <Stack.Screen
+        name="accepted"
+        options={{headerTitle: 'Accepted Order'}}
+        component={AcceptedOrder}
+      />
+      <Stack.Screen
+        name="rejected"
+        options={{headerTitle: 'Rejected Order'}}
+        component={RejectedOrder}
+      />
+      <Stack.Screen
+        name="packed"
+        options={{headerTitle: 'Packed Order'}}
+        component={PackedOrder}
+      />
+      <Stack.Screen
+        name="shipped"
+        options={{headerTitle: 'Shipped Order'}}
+        component={ShippedOrder}
+      />
+      <Stack.Screen
+        name="delivered"
+        options={{headerTitle: 'Delivered Order'}}
+        component={DeliveredOrder}
+      />
+      <Stack.Screen
+        name="orderDetail"
+        options={{headerTitle: 'Order Detail'}}
+        component={OrderDetail}
+      />
     </Stack.Navigator>
   );
 };

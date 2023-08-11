@@ -8,19 +8,12 @@ import LeftIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 const TextInputComponent = props => {
   return (
     <View>
-      
       <View
         style={[
           styles.mainStyle,
           {borderColor: props.borderColor},
           {borderWidth: props.widthh},
         ]}>
-        <LeftIcon
-          style={styles.iconstyleleft}
-          name={props.leftIconName}
-          size={props.iconSize}
-          color="#9c9c9c"
-        />
         <TextInput
           onChange={props.onChange}
           style={styles.inptStyle}

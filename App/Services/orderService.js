@@ -14,6 +14,7 @@ export const getStatusWiseOrderCount = async () =>{
   console.log('tpken',headers);
   let resp =await AsyncStorage.getItem('token')
   headers.token=resp
+  global.token=resp
   let data =await axios.get(basePath + '/order/statuswisecount', {headers});
   return data
 }

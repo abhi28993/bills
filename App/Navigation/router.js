@@ -7,9 +7,10 @@ import SlideScreen from '../Screens/SliderScreen/Slider';
 import LoginScreen from '../Screens/LoginScreen/Login';
 import SignUpScreen from '../Screens/SignUpScreen/SignUp';
 import AddProductStack from './AddProductStack';
-
+import SupplierStack from './SupplierStack';
+import CustomerStack from './CustomerStack';
 import BottomTabStack from '../Navigation/bottomTab';
-import AddCategoryStack from "./AddCatagoryStack"
+import AddCategoryStack from "./AddCatagoryStack";
 import {
   SPLASH_SCREEN,
   SLIDE_SCREEN,
@@ -18,7 +19,10 @@ import {
   BOTTOM_STACK,
   ADD_CATEGORY_STACK,
   OTP_SCREEN,
-  ADD_PRODUCT_STACK
+  ADD_PRODUCT_STACK,
+  SUPPLIER_STACK,
+  CUSTOMER_STACK,
+  CUSTOMERDETAIL_STACK
 } from '../Assets/Constant/StringConstant';
 import OtpVerify from '../Screens/OtpScreen/Otp';
 // import SideDrawer from './sideDrawer'
@@ -31,7 +35,7 @@ const AllStacks = () => {
       <Stack.Screen
         name={SPLASH_SCREEN}
         component={SplashScreen}
-        options={{animationEnabled: false}}
+        options={{animationEnabled: false}}  
       />
       <Stack.Screen
         name={LOGIN_SCREEN}
@@ -46,7 +50,6 @@ const AllStacks = () => {
       <Stack.Screen
         name={BOTTOM_STACK}
         component={BottomTabStack}
-        options={{headerShown: false}}
       />
 
       <Stack.Screen
@@ -70,11 +73,22 @@ const AllStacks = () => {
         component={AddProductStack}
         options={{animationEnabled: false}}
       />
-      {/* <Stack.Screen
-        name={FORGOT_SCREEN}
-        component={ForgotPassword}
+     
+      <Stack.Screen
+        name={CUSTOMER_STACK}
+        component={CustomerStack}
         options={{animationEnabled: false}}
-      /> */}
+      />  
+      <Stack.Screen
+        name={CUSTOMERDETAIL_STACK}
+        component={CustomerStack}
+        options={{animationEnabled: false}}
+      />  
+       <Stack.Screen
+        name={SUPPLIER_STACK}
+        component={SupplierStack}
+        options={{animationEnabled: false}}
+  />
 
       {/* <Stack.Screen
         name={SUCCESS_SCREEN}

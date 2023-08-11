@@ -4,12 +4,12 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 const Stack = createNativeStackNavigator();
 
 import AddCategory from '../Screens/AddCategoryScreen/AddCategory';
-import {
-  ADD_CATEGORY_SCREENS,
-} from '../Assets/Constant/StringConstant';
+import {ADD_CUSTOMER_SCREENS} from '../Assets/Constant/StringConstant';
 import {GlobalStyles} from '../Assets/Colors/Color';
+import AddCustomerScreen from '../Screens/BillingScreen/AddCustomerScreen';
+import CustomerDetailsScreen from '../Screens/BillingScreen/CustomerDetailsScreen';
 
-const AddCategoryStack = () => {
+const CustomerStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -21,12 +21,17 @@ const AddCategoryStack = () => {
         tabBarActiveBackgroundColor: GlobalStyles.colors.primary200,
       }}>
       <Stack.Screen
-        name={ADD_CATEGORY_SCREENS}
-        component={AddCategory}
+        name={ADD_CUSTOMER_SCREENS}
+        component={AddCustomerScreen}
+        options={{animationEnabled: false}}
+      />
+      <Stack.Screen
+        name={CUSTOMERDETAIL_STACK}
+        component={CustomerDetailsScreen}
         options={{animationEnabled: false}}
       />
     </Stack.Navigator>
   );
 };
 
-export default AddCategoryStack;
+export default CustomerStack;

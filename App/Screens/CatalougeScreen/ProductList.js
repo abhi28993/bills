@@ -8,28 +8,55 @@ import {GlobalStyles} from '../../Assets/Colors/Color';
 import * as StringC from '../../Assets/Constant/StringConstant';
 import {getProduct} from '../../Services/productService';
 
-const Item = ({title}) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
+
 
 const ProductList = props => {
   const [Products, setProducts] = useState([]);
-  // console.log('props===================',props.route.params.catId);
   
   const isFocused = useIsFocused();
   useEffect(() => {
-    if(props.route.params && props.route.params.catId){
-    getProduct(props.route.params.catId)
+    getProduct(props.route.params?.catId||'')
     .then(resp => {
-        console.log('product data ', resp.data.data);
+      console.log('resp product========',resp.data.data);
         if (resp.data.data && resp.data.data.length) {
           setProducts([...resp.data.data]);
+        }else{
+          setProducts([]);
         }
       })
-      .catch(err => console.log('err while fetching data'));}
+      .catch(err => console.log('err while fetching data',err));
+    // }
   }, [isFocused]);
+
+  const renderItem = ({item}) => {
+    return (
+      <View style={styles.outerContainer}>
+        <View style={styles.statusContainer}>
+          <Text style={styles.orderText}>Order #{item.id}</Text>
+          <Text>{item?.timing}</Text>
+        </View>
+        <View style={styles.statusContainers}>
+          <View style={styles.statusInnerContainer}>
+            <View style={styles.productContainer}>
+              <View style={styles.imageContainer}>
+                {/* <Image source={item} style={styles.image} /> */}
+              </View>
+              <View>
+                <Text>{item?.name}</Text>
+                <Text>{item?.timing}</Text>
+                <TouchableOpacity style={styles.detailContainer}>
+                  <Text style={styles.detailsText}> More Details</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+            <View>
+              <Text>{item?.paymentMethod}</Text>
+            </View>
+          </View>
+        </View>
+      </View>
+    );
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -52,13 +79,10 @@ const ProductList = props => {
       </View>
       <View style={styles.imageContainer}></View>
       <FlatList
-        data={Products}
-        renderItem={({item}) => (
-          <TouchableOpacity>
-            <Item title={item.name} />
-          </TouchableOpacity>
-        )}
+         data={Products}
+        renderItem={renderItem}
         keyExtractor={item => item._id}
+        contentContainerStyle={{flexGrow: 0}}
       />
     </SafeAreaView>
   );
@@ -66,7 +90,6 @@ const ProductList = props => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // marginTop: StatusBar.currentHeight || 0,
   },
   item: {
     backgroundColor: '#fff',
@@ -149,6 +172,57 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: 'center',
+  },
+  
+  outerContainer: {
+    backgroundColor: 'white',
+    borderRadius: 20,
+    shadowColor: '#000',
+    elevation: 20,
+    marginTop: '5%',
+    marginLeft: '5%',
+    width: '90%',
+  },
+  statusContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    shadowColor: '#000',
+    padding: '3%',
+  },
+  statusContainers: {
+    justifyContent: 'space-between',
+    shadowColor: '#000',
+    padding: '3%',
+  },
+  orderText: {
+    fontWeight: 'bold',
+    color: '#000',
+  },
+  statusInnerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  productContainer: {
+    flexDirection: 'row',
+    height: '100%',
+  },
+  image: {
+    width: 80,
+    height: 70,
+    resizeMode: 'cover',
+  },
+  imageContainer: {
+    width: 100,
+  },
+  detailContainer: {
+    borderWidth: 1,
+    borderRadius: 2,
+    elevation: 1,
+    backgroundColor: '#c6affc',
+  },
+  detailsText: {
+    fontWeight: '700',
+    color: '#000',
   },
 });
 

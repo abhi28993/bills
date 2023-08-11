@@ -16,6 +16,7 @@ const CatalogueStack = () => {
         name={ADD_CATALOUGE_SCREEN}
         component={CategoryList}
         options={{animationEnabled: false}}
+        
       />
       <Tab.Screen
         name={ADD_PRODUCT_SCREEN}

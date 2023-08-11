@@ -9,7 +9,7 @@ import {useIsFocused} from '@react-navigation/native';
 
 
 const Item = ({items:{name,_id},props}) => (
-  <View style={styles.item}>
+  <View style={styles.itemListContainer}>
     <Text onPress={()=>props.navigation.navigate(StringC.ADD_PRODUCT_SCREEN,{catId:_id})} style={styles.title}>{name}</Text>
   </View>
 );
@@ -19,33 +19,28 @@ const CategoryList = props => {
   const isFocused = useIsFocused();
 
   const Load = () => {
-    try {
       getCategory().then(resp=>{
         if (resp.data.data && resp.data.data.length) {
         setCategories([...resp.data.data]);
       }
-      }).catch(err=>Error(err))
-      
-    } catch (error) {
-      console.log(error);
-    }
+      }).catch(err=>console.log(err))
   };
 
   useEffect(() => {
     Load();
   }, [setCategories, isFocused]);
 
+  const renderItem = ({item}) => {
+    return (
+        <Item items={item} props={props}/>
+    )
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.cartContainers}>
         <Text
-          style={{
-            color: '#fff',
-            flex: 1,
-            fontSize: 19,
-            fontWeight: 'bold',
-            fontStyle: 'normal',
-          }}>
+          style={styles.headerText}>
           Categories
         </Text>
         <Text
@@ -54,13 +49,11 @@ const CategoryList = props => {
           + Add
         </Text>
       </View>
-      <View style={styles.imageContainer}></View>
       <FlatList
         data={Category}
-        renderItem={({item}) => (
-            <Item items={item} props={props}/>
-        )}
+        renderItem={renderItem}
         keyExtractor={item => item._id}
+        style={{ marginTop: "2%" }}
       />
     </SafeAreaView>
   );
@@ -75,21 +68,33 @@ const styles = StyleSheet.create({
     flex: 1,
     // marginTop: StatusBar.currentHeight || 0,
   },
-  item: {
+  headerText:{
+    color: '#fff',
+    flex: 1,
+    fontSize: 19,
+    fontWeight: 'bold',
+    fontStyle: 'normal',
+  },
+  itemListContainer: {
     backgroundColor: '#fff',
-    margin: '1%',
+    marginLeft:'2%',
+    marginRight:'2%',
+    marginBottom:"2%",
+    // margin: '2%',
     padding: '3%',
     borderRadius: 10,
-    shadowColor: '#00f',
-    elevation: 5,
+    shadowColor: '#000',
+    elevation: 6,
   },
   title: {
     fontSize: 22,
+    backgroundColor: 'white',
+    width: '90%',
   },
 
   cartContainers: {
     width: '100%',
-    padding: '4%',
+    padding: '3%',
     alignItems: 'center',
     backgroundColor: GlobalStyles.colors.primary500,
     flexDirection: 'row',

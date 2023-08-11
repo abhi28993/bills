@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 // import {Svg, G, Path, Circle, Rect} from 'react-native-svg';
 // import IconButtons from '../../Components/UI/IconButton';
 import {getStatusWiseOrderCount} from '../../Services/orderService';
 // import { Searchbar } from "react-native-paper";
+import {GlobalStyles} from "../../Assets/Colors/Color";
 
 const OrderScreen = ({props, navigation}) => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -17,7 +18,7 @@ const OrderScreen = ({props, navigation}) => {
     delivered: 0,
   });
 
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getStatusWiseOrderCount()
@@ -28,73 +29,75 @@ const OrderScreen = ({props, navigation}) => {
             statusObj[element.status] = element.count;
           });
           setStatusObj({...statusObj});
-          setLoading(false);
+          // setLoading(false);
         }
       })
       .catch(err => console.log('==========', err));
   }, [setStatusObj]);
 
-  if (loading) {
-    return <Text>Loading...</Text>;
-  }
+  // if (loading) {
+  //   return <Text>Loading...</Text>;
+  // }
 
-  const newOrders = () => navigation.navigate();
-  const acceptedOrders = () => navigation.navigate();
-  const rejectedOrders = () => navigation.navigate();
-  const packedOrders = () => navigation.navigate();
-  const shippedOrders = () => navigation.navigate();
-  const deliveredOrders = () => navigation.navigate();
-  
+  const newOrders = () => navigation.navigate('new');
+  const acceptedOrders = () => navigation.navigate('accepted');
+  const rejectedOrders = () => navigation.navigate('rejected');
+  const packedOrders = () => navigation.navigate('packed');
+  const shippedOrders = () => navigation.navigate('shipped');
+  const deliveredOrders = () => navigation.navigate('delivered');
+
   return (
     <View style={styles.screen}>
-      <View style={styles.imageContainer}></View>
+      <View style={styles.imageContainer}>
+        <Text style={styles.headerText}>Orders</Text>
+      </View>
       <View style={styles.productCategories}>
         <View style={styles.productCategoriesContainer}>
           <TouchableOpacity
             style={styles.innerTextContainer}
             onPress={newOrders}>
-            <Text> Icon</Text>
-            <Text>New Orders</Text>
-            <Text>{statusObj.pending}</Text>
+             <Image style={styles.orderImageContainer} source={require("../../Assets/Icons/newOrder.png")}  resizeMode='contain'/>
+            <Text style={styles.orderText}>New Orders</Text>
+            <Text style={styles.orderText}>{statusObj.pending}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.innerTextContainer}
             onPress={acceptedOrders}>
-            <Text>Icon</Text>
-            <Text>Accepted Orders</Text>
-            <Text>{statusObj.accepted}</Text>
+            <Image style={styles.orderImageContainer} source={require("../../Assets/Icons/acceptedOrders.png")}  resizeMode='contain'/>
+            <Text style={styles.orderText}>Accepted Orders</Text>
+            <Text style={styles.orderText}>{statusObj.accepted}</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.productCategoriesContainer}>
           <TouchableOpacity
             style={styles.innerTextContainer}
             onPress={rejectedOrders}>
-            <Text>Icon</Text>
-            <Text>Rejected Orders</Text>
-            <Text>{statusObj.rejected}</Text>
+            <Image style={styles.orderImageContainer} source={require("../../Assets/Icons/cancelOrder.png")}  resizeMode='contain' />
+            <Text style={styles.orderText}>Rejected Orders</Text>
+            <Text style={styles.orderText}>{statusObj.rejected}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.innerTextContainer}
             onPress={packedOrders}>
-            <Text>Icon</Text>
-            <Text>Packed Orders</Text>
-            <Text>{statusObj.packed}</Text>
+           <Image style={styles.orderImageContainer} source={require("../../Assets/Icons/bookingOrder.png")}  resizeMode='contain' />
+            <Text style={styles.orderText}>Packed Orders</Text>
+            <Text style={styles.orderText}>{statusObj.packed}</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.productCategoriesContainer}>
           <TouchableOpacity
             style={styles.innerTextContainer}
             onPress={shippedOrders}>
-            <Text>Icon</Text>
-            <Text>Shipped Orders</Text>
-            <Text>{statusObj.shipped}</Text>
+           <Image style={styles.orderImageContainer} source={require("../../Assets/Icons/shippedOrders.png")}   resizeMode='contain'/>
+            <Text style={styles.orderText}>Shipped Orders</Text>
+            <Text style={styles.orderText}>{statusObj.shipped}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.innerTextContainer}
             onPress={deliveredOrders}>
-            <Text>Icon</Text>
-            <Text>Delivered Orders</Text>
-            <Text>{statusObj.delivered}</Text>
+           <Image style={styles.orderImageContainer} source={require("../../Assets/Icons/DeliverOrders.png")}  resizeMode='contain'/>
+            <Text style={styles.orderText}>Delivered Orders</Text>
+            <Text style={styles.orderText}>{statusObj.delivered}</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -102,78 +105,11 @@ const OrderScreen = ({props, navigation}) => {
   );
 };
 
-// mainScreen.navigationOptions = () => ({
-//   headerTitle: () => (
-//     <View style={{flexDirection: 'row'}}>
-//       <View style={{marginTop: '4%'}}>
-//         <Svg
-//           xmlns="http://www.w3.org/2000/svg"
-//           width="21.651"
-//           height="17.961"
-//           viewBox="0 0 21.651 17.961">
-//           <G
-//             id="Group_18254"
-//             data-name="Group 18254"
-//             transform="translate(-56.75 -55.75)">
-//             <Path
-//               id="Path_26"
-//               data-name="Path 26"
-//               d="M2192,109.266h8.955"
-//               transform="translate(-2133.869 -52.266)"
-//               fill="none"
-//               stroke="#212121"
-//               stroke-linecap="round"
-//               stroke-width="2.5"
-//             />
-//             <Path
-//               id="Path_27"
-//               data-name="Path 27"
-//               d="M2192,109.266h19.151"
-//               transform="translate(-2134 -44.535)"
-//               fill="none"
-//               stroke="#212121"
-//               stroke-linecap="round"
-//               stroke-width="2.5"
-//             />
-//             <Path
-//               id="Path_28"
-//               data-name="Path 28"
-//               d="M2192,109.266h10.218"
-//               transform="translate(-2125.066 -36.805)"
-//               fill="none"
-//               stroke="#212121"
-//               stroke-linecap="round"
-//               stroke-width="2.5"
-//             />
-//           </G>
-//         </Svg>
-//       </View>
-//       <View>
-//         <Text
-//           style={{
-//             fontSize: 15,
-//             marginTop: '14%',
-//             // marginLeft: "4%",
-//             fontWeight: 'bold',
-//           }}>
-//           ICL Connect
-//         </Text>
-//       </View>
-//       {/* r */}
-//     </View>
-//   ),
-// });
-
 const styles = StyleSheet.create({
   screen: {
     width: '100%',
     height: '100%',
   },
-  // searchCartContainer: {
-  //   flexDirection: 'row',
-  //   width: '100%',
-  //   height: '8%',
-  // },
   searchContainer: {
     marginTop: '5%',
     width: '70%',
@@ -191,8 +127,28 @@ const styles = StyleSheet.create({
     height: '40%',
   },
   imageContainer: {
-    width: '90%',
-    height: '19%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    height: '8%',
+    backgroundColor: '#3e04c3',
+  },
+  orderImageContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '31%',
+    height: '35%',
+    // backgroundColor: '#3e04c3',
+  },
+  orderText:{
+    // fontWeight:"bold",
+    fontSize: 15,
+    color:"#000",
+    marginTop:"3%"
+  },
+  headerText: {
+    fontSize: 20,
+    color:"#fff"
   },
   outerCart: {
     width: ' 90%',
@@ -238,6 +194,7 @@ const styles = StyleSheet.create({
   },
   productCategories: {
     height: '70%',
+    marginTop:"20%"
   },
   productCategoriesText: {
     fontWeight: 'bold',
@@ -247,7 +204,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '30%',
     justifyContent: 'space-evenly',
-    marginTop: '2%',
+    marginTop: '3%',
   },
   innerTextContainer: {
     width: '45%',
@@ -280,7 +237,7 @@ const styles = StyleSheet.create({
   productCategorystyle: {
     marginTop: '5%',
   },
-  // productCategoriesSVG: {
+  // productCategories: {
   //   marginTop: '5%',
   // },
 });

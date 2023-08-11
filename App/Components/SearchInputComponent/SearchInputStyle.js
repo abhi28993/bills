@@ -9,7 +9,11 @@ const styles = StyleSheet.create({
     marginRight: '4%',
     backgroundColor: '#FEFEFE',
     borderColor: '#DFDFDF',
-    borderWidth: 1,
+    borderWidth: 2,
+    borderTopWidth:0,
+    borderLeftWidth:0,
+    borderRightWidth:0,
+    borderColor:"#000"
   },
   cmpmain: {
     margin: 10,

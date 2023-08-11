@@ -1,8 +1,7 @@
 import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
-    height: '100%',
-    width: '100%',
+   flex:1,
     backgroundColor: '#000',
   },
   logo: {
@@ -21,7 +20,6 @@ const styles = StyleSheet.create({
   inputArea: {
     marginTop: '1%',
     width:'100%',
-    margin:'10%',
     alignSelf: 'center',
   },
   headerMain: {
@@ -29,7 +27,6 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   lowerMain: {
-    height: '70%',
     width: '100%',
     borderTopRightRadius: 30,
     borderTopLeftRadius: 30,
@@ -38,8 +35,7 @@ const styles = StyleSheet.create({
   mainheading: {
     fontSize: 30,
     color: '#2B2D42',
-    // marginTop: '5%',
-    margin:'20%',
+    margin:"5%",
     fontFamily: 'Poppins-Medium',
     alignSelf: 'center',
   },

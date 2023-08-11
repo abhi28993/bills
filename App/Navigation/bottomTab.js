@@ -22,10 +22,11 @@ const BottomTabStack = () => {
     <HomeStack.Navigator
       screenOptions={({route}) => ({
         headerStyle: {backgroundColor: GlobalStyles.colors.primary500},
-        headerTintColor: 'white',
+        headerTintColor: '#fff',
         tabBarStyle: {backgroundColor: GlobalStyles.colors.primary500},
         tabBarActiveTintColor: GlobalStyles.colors.accent500,
         tabBarActiveBackgroundColor: GlobalStyles.colors.primary200,
+        headerShown: false,
 
         tabBarIcon: ({focused}) => {
           switch (route.name) {
@@ -74,18 +75,6 @@ const BottomTabStack = () => {
                   </View>
                 </View>
               );
-            case MONEY_STACK:
-              return focused ? (
-                <Image
-                  source={require('../Assets/Icons/money.png')}
-                  style={styles.buttomBarIcons}
-                />
-              ) : (
-                <Image
-                  source={require('../Assets/Icons/money.png')}
-                  style={styles.buttomBarIcons}
-                />
-              );
             case MORE_STACK:
               return focused ? (
                 <Image
@@ -103,10 +92,9 @@ const BottomTabStack = () => {
           }
         },
       })}>
-      <HomeStack.Screen name={OREDR_STACK} component={OrderStack} focused/>
-      <HomeStack.Screen name={BILLING_STACK} component={BillingStack} focused />
-      <HomeStack.Screen name={CATALOGUE_STACK} options={{headerShown: false}} component={CatalogueStack} focused />
-      <HomeStack.Screen name={MONEY_STACK} component={MoneyStack} focused/>
+      <HomeStack.Screen name={OREDR_STACK}  component={OrderStack} focused/>
+      <HomeStack.Screen name={BILLING_STACK} options={{headerShown:true}} component={BillingStack}/>
+      <HomeStack.Screen name={CATALOGUE_STACK} component={CatalogueStack} />
       <HomeStack.Screen name={MORE_STACK} component={MoreStack} focused />
     </HomeStack.Navigator>
 

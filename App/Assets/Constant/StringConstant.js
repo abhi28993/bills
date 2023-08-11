@@ -5,7 +5,7 @@ export const phone = 'Phone';
 export const EmailAddress = 'Email';
 export const Password = 'Password';
 export const NEXT = 'Next';
-export const loginTitle = "Let's Sign In";
+export const loginTitle = "Sign In";
 export const otpTitle = "OTP";
 export const otpSubTitle = "please enter the opt send to your mobile number";
 export const CreateAccount = "Let's Sign Up";
@@ -156,7 +156,7 @@ export const bioLoremm =
 //  STACKS
 export const HOME_STACK = 'Home Stack';
 export const OREDR_STACK = 'Order';
-export const BILLING_STACK = 'Billing';
+export const BILLING_STACK = 'Bill Book';
 export const CATALOGUE_STACK = 'Catalogue';
 export const MONEY_STACK = 'Money';
 export const MORE_STACK = 'More';
@@ -165,11 +165,18 @@ export const REVIEW_STACK = 'Review Stack';
 export const PROFILE_STACK = 'Profile Stack';
 export const BOTTOM_STACK = 'Bottom Stack';
 export const SETTING_STACK = 'Setting Stack';
-export const ADD_CATEGORY_STACK = 'Category Stack';
 export const ADD_PRODUCT_STACK = 'Product Stack';
 export const ALL_CHAT_STACK = 'All Chat Stack';
+export const SUPPLIER_STACK = 'Supplier Stack';
+export const CUSTOMER_STACK = 'Customer Stack';
+export const CUSTOMERDETAIL_STACK = 'Customer Detail';
+export const ADD_CATEGORY_STACK = 'Category Stack';
+
 
 // SCREENS
+export const ADD_CATEGORY_SCREENS = 'Add Categories';
+export const ADD_CUSTOMER_SCREENS = 'Add Customer';
+export const ADD_SUPPLIER_SCREENS = 'Add Supplier';
 export const TAYCONRULES_SCREEN = 'TayconRules';
 export const SPLASH_SCREEN = 'Splash Screen';
 export const SLIDE_SCREEN = 'Slide Screen';
@@ -213,3 +220,4 @@ export const ALL_CHAT_SCREEN = 'All Chat Screen';
 export const SINGLE_CHAT_SCREEN = 'Single Chat Screen';
 export const ADD_CATALOUGE_SCREEN = 'Catalouge';
 export const ADD_PRODUCT_SCREEN = 'Product';
+export const CUSTOMER_DETAIL_SCREEN = 'Customer Deatil';

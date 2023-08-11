@@ -21,18 +21,18 @@ function Login(props) {
   });
 
   const dispatch = useDispatch();
-  
+
   afterSubmit = () => {
     setLoginUser({...loginUser, isSubmit: true});
     if (isFormValid) {
       let payload = {
         username: loginUser.email,
       };
-      
+
       login(payload)
         .then(resp => {
           props.otpToken = resp.token;
-          dispatch(otpLogin(resp.data.data))
+          dispatch(otpLogin(resp.data.data));
           props.navigation.push(StringC.OTP_SCREEN);
         })
         .catch(err => {
@@ -55,39 +55,36 @@ function Login(props) {
   };
   return (
     <View style={Styles.container}>
-      <ScrollView style={Styles.scrollView}>
-        <View style={{height: windowHeight}}>
-          <View style={{height: '30%'}}>
-            <ImageBackground
-              style={{height: '100%'}}
-              source={require('../../Assets/Images/golden.png')}>
-              <Image
-                style={Styles.logo}
-                source={require('../../Assets/Images/logo.png')}
-              />
-            </ImageBackground>
-          </View>
-          <View style={Styles.lowerMain}>
-            <Text style={Styles.mainheading}>{StringC.loginTitle}</Text>
-            <View style={Styles.inputArea}>
-              <TextInputComponent
-                fieldname={StringC.Email}
-                placename={'Email/Phone'}
-                iconSize={18}
-                leftIconName="account-outline"
-                onChngText={text => setValues('email', text)}
-                vval={loginUser.email}
-                validd={validationHandler('email')}
-                borderColor={loginUser.isemailFocused ? 'red' : '#C0C0C0'}
-                widthh={loginUser.isemailWidth}
-              />
-            </View>
-            <View style={Styles.btnnext}>
-              <Custombtn title={StringC.signIn} onPress={() => afterSubmit()} />
-            </View>
-          </View>
+      <View style={{height: windowHeight/2}}>
+        <ImageBackground
+          style={{height: '100%'}}
+          source={require('../../Assets/Images/golden.png')}>
+          <Image
+            style={Styles.logo}
+            source={require('../../Assets/Images/logo.png')}
+          />
+        </ImageBackground>
+      </View>
+      <View style={Styles.lowerMain}>
+        <Text style={Styles.mainheading}>{StringC.loginTitle}</Text>
+        <View style={Styles.inputArea}>
+          <Text style={{marginLeft: '5%',fontWeight:"bold"}}>Email/Mobile No</Text>
+          <TextInputComponent
+            fieldname={StringC.Email}
+            placename={'Email/Phone'}
+            iconSize={18}
+            leftIconName="account-outline"
+            onChngText={text => setValues('email', text)}
+            vval={loginUser.email}
+            validd={validationHandler('email')}
+            borderColor={loginUser.isemailFocused ? 'red' : '#C0C0C0'}
+            widthh={loginUser.isemailWidth}
+          />
         </View>
-      </ScrollView>
+        <View style={Styles.btnnext}>
+          <Custombtn title={StringC.signIn} onPress={() => afterSubmit()} />
+        </View>
+      </View>
     </View>
   );
 }
